@@ -1,6 +1,6 @@
 {
   "host": "localhost",
-  "port": 3030,
+  "port": 9100,
   "public": "../public/",
   "paginate": {
     "default": 10,
@@ -40,7 +40,7 @@
       }
     }
   },
-  "mongodb": "mongodb://admin:password@localhost:27017/neeboo?authSource=admin",
+  "mongodb": "MONGO_CONNECTION_STRING",
   "web3-private": "WEB3_ACCOUNT_PRIVATE_KEY",
   "web3-infura": "WEB3_INFURA",
   "web3-address": "WEB3_ADDRESS"
