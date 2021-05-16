@@ -1,30 +1,26 @@
-// Initializes the `asset-request` service on path `/asset-request`
+// Initializes the `token-manager` service on path `/token-manager`
 import { ServiceAddons } from '@feathersjs/feathers';
 import { Application } from '../../declarations';
-import { AssetRequest } from './asset-request.class';
-import createModel from '../../models/asset-request.model';
-import hooks from './asset-request.hooks';
+import { TokenManager } from './token-manager.class';
+import hooks from './token-manager.hooks';
 
 // Add this service to the service type index
 declare module '../../declarations' {
   interface ServiceTypes {
-    'asset-request': AssetRequest & ServiceAddons<any>;
+    'token-manager': TokenManager & ServiceAddons<any>;
   }
 }
 
 export default function (app: Application): void {
   const options = {
-    Model: createModel(app),
     paginate: app.get('paginate')
   };
 
-
-
   // Initialize our service with any options it requires
-  app.use('/asset-request', new AssetRequest(options, app));
+  app.use('/token-manager', new TokenManager(options, app));
 
   // Get our initialized service so that we can register hooks
-  const service = app.service('asset-request');
+  const service = app.service('token-manager');
 
   service.hooks(hooks);
 }

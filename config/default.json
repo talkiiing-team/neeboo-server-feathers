@@ -40,5 +40,8 @@
       }
     }
   },
-  "mongodb": "mongodb://localhost:27017/neeboo"
+  "mongodb": "mongodb://admin:password@localhost:27017/neeboo?authSource=admin",
+  "web3-private": "WEB3_ACCOUNT_PRIVATE_KEY",
+  "web3-infura": "WEB3_INFURA",
+  "web3-address": "WEB3_ADDRESS"
 }

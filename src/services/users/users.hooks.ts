@@ -1,11 +1,9 @@
 import * as feathersAuthentication from '@feathersjs/authentication';
 import * as local from '@feathersjs/authentication-local';
-import validate from '../../hooks/validate';
-import { create } from '../../schemas/users.schema';
 import { disallow } from 'feathers-hooks-common';
 import checkAdmin from '../../hooks/check-admin';
 import limitToUser from '../../hooks/limit-to-user';
-import { VerificationInitiators } from '../../misc/enums';
+import createFirstWallet from '../../hooks/create-first-wallet';
 // Don't remove this comment. It's needed to format import lines nicely.
 
 const { authenticate } = feathersAuthentication.hooks;
@@ -17,7 +15,6 @@ export default {
     find: [authenticate('jwt')],
     get: [authenticate('jwt'), limitToUser({ allowOthers: true })],
     create: [
-      validate(create),
       hashPassword('password'),
     ],
     update: [disallow()],
@@ -29,7 +26,7 @@ export default {
     all: [protect('password')],
     find: [],
     get: [],
-    create: [],
+    create: [createFirstWallet()],
     update: [],
     patch: [],
     remove: [],

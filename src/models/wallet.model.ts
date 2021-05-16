@@ -28,20 +28,27 @@ export default function (app: Application): Model<any> {
         enum: Object.values(BaseCurrencies),
         default: BaseCurrencies.USD,
       },
-      walletPass: REQUIRED_STRING,
+      walletPass: STRING,
       label: STRING,
-      cachedBalance: NUMBER,
+      cachedBalance: {
+        ...NUMBER,
+        default: 0,
+      },
       requests: {
-        type: [{
-          ...OBJECT_ID,
-          ref: ModelNames.AssetRequest
-        }],
+        type: [
+          {
+            ...OBJECT_ID,
+            ref: ModelNames.AssetRequest,
+          },
+        ],
       },
       assets: {
-        type: [{
-          ...OBJECT_ID,
-          ref: ModelNames.Asset
-        }],
+        type: [
+          {
+            ...OBJECT_ID,
+            ref: ModelNames.Asset,
+          },
+        ],
       },
     },
     {

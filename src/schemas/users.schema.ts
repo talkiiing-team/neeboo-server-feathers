@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 
 export const create = yup.object().shape({
-  email: yup
+  /*email: yup
     .string()
     .trim()
     .email()
@@ -28,5 +28,5 @@ export const create = yup.object().shape({
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_-])/,
       'password must contain at least one lowercase letter, one uppercase letter and one special symbol',
-    ),
+    ),*/
 });

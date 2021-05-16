@@ -33,7 +33,7 @@ export default function (app: Application): Model<any> {
       /*phoneNumber: {
         ...REQUIRED_STRING,
       },*/
-      type: {
+      form: {
         ...REQUIRED_STRING,
         enum: Object.values(UserMembershipType),
       },

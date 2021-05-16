@@ -6,6 +6,7 @@ import { Application } from '../declarations'
 import { Model, Mongoose } from 'mongoose'
 import { AssetRequestStatus, ModelNames } from '../misc/enums'
 import {
+  OBJECT_ID,
   REQUIRED_NUMBER,
   REQUIRED_STRING,
   STRING,
@@ -16,12 +17,22 @@ export default function (app: Application): Model<any> {
   const mongooseClient: Mongoose = app.get('mongooseClient')
   const { Schema } = mongooseClient
 
+  const ownerSchema = new Schema({
+    id: OBJECT_ID,
+    name: REQUIRED_STRING,
+  })
+
   const schema = new Schema(
     {
       price: REQUIRED_NUMBER,
       name: REQUIRED_STRING,
       label: STRING,
+      owner: ownerSchema,
       subject: REQUIRED_STRING,
+      readyAsset: {
+        ...OBJECT_ID,
+        ref: ModelNames.Asset,
+      },
       state: {
         ...REQUIRED_STRING,
         enum: Object.values(AssetRequestStatus),
