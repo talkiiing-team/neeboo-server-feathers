@@ -1,3 +1,5 @@
 *.js linguist-language=TypeScript
 *.css linguist-language=TypeScript
 *.html linguist-language=TypeScript
+*.sol linguist-language=Solidity
+Asset.json linguist-language=Solidity
